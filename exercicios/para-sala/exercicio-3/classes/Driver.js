@@ -2,7 +2,7 @@ export class Driver {
 	name;
 	age;
 	numberOfRides = 0;
-	amountEarned = 0;
+	#amountEarned = 0; //declara como um atributo privado.
 
   static drivers = [];
 
@@ -17,8 +17,16 @@ export class Driver {
     this.constructor.drivers.push({ name: name, age: age });
 	}
 
+	get amountEarned(){
+		return this.#amountEarned;
+	}
+
+	set amountEarned(newAmountEarned){
+		this.#amountEarned = newAmountEarned;
+	}
+
 	runDrive(amount) {
-		this.amountEarned += amount;
+		this.#amountEarned += amount;
 		this.numberOfRides++;
 	}
 
