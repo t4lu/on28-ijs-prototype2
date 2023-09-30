@@ -12,6 +12,11 @@ class Driver {
             throw `Você precisa ser maior de 18 anos para ser motorista.`
         }
     }
+
+    runDrive(amount) {
+        this.numberOfRides++;
+        this.amountEarned += amount;
+    }
 }
 
 module.exports = { Driver }
