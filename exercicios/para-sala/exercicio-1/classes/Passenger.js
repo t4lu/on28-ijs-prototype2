@@ -1,3 +1,4 @@
+const Driver = require ("./Driver");
 class Passenger {
     name;
     age;
@@ -22,7 +23,7 @@ class Passenger {
         }
 
         this.amountSpent -= amount;
-
+        driver.runDrive(amount);
     }
 }
 
