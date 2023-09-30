@@ -1,5 +1,5 @@
-const Driver = require ("./Driver");
-class Passenger {
+import { Driver } from './classes/Driver.js';
+export class Passenger {
     name;
     age;
     password;
@@ -26,5 +26,3 @@ class Passenger {
         driver.runDrive(amount);
     }
 }
-
-module.exports = { Passenger }

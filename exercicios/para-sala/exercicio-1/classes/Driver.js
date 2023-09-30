@@ -1,4 +1,4 @@
-class Driver {
+export class Driver {
     name;
     age;
     numberOfRides = 0;
@@ -18,5 +18,3 @@ class Driver {
         this.amountEarned += amount;
     }
 }
-
-module.exports = { Driver }
