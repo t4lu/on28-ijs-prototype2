@@ -3,6 +3,7 @@ export class Driver {
 	age;
 	numberOfRides = 0;
 	amountEarned = 0;
+	static drivers = [];
 
 	constructor(name, age) {
 		if (age < 18) {
@@ -12,10 +13,24 @@ export class Driver {
 		}
 		this.name = name;
 		this.age = age;
+		//this.construtor.drivers.push();//tanto essa quanto a implementação abaixo, funcionam da mesma forma.
+		Driver.drivers.push({ name, age });
 	}
 
 	runDrive(amount) {
 		this.amountEarned += amount;
 		this.numberOfRides++;
+	}
+	static numberOfDrivers() {
+		console.log(`Existem ${Driver.drivers.length} motoristas cadastradas.`)
+	}
+
+	static ageAverage() {
+		const totalOfDrivers = Driver.drivers.lenght;
+		if (totalOfDrivers === 0) return;
+
+		const sumOfAges = Driver.drivers.reduce((total, driver) => total + driver.age, 0);
+		const ageAverage = (sumOfAges / totalOfDrivers).toFixed(2);
+		console.log(`A média de idade das motoristas é ${ageAverage} ano(s).`)
 	}
 }
