@@ -1,16 +1,15 @@
-export class Passenger {
-	name;
-	age;
-	#password;
-	#amountSpent = 0;
+import { Driver } from './Driver.js';
+import { Person } from './Person.js';
+export class Passenger extends Person { //a classe Passenger 
 
-  static passengers = [];
+	#password;
+
+	static passengers = [];
 
 	constructor(name, age, password) {
-		this.name = name;
-		this.age = age;
+		super(name, age) // esses atributos estão sendo chamados da classe Person
 		this.#password = password;
-    this.constructor.passengers.push({ name: name, age: age });
+		this.constructor.passengers.push({ name: name, age: age });
 	}
 
 	requestDrive(driver, amount, password) {
@@ -22,11 +21,11 @@ export class Passenger {
 			console.log(`${this.name}, sua senha está incorreta!`);
 			return;
 		}
-		this.#amountSpent -= amount;
+		this.amount -= amount;
 		driver.runDrive(amount);
 	}
 
-  changePassword(oldPassword, newPassword) {
+	changePassword(oldPassword, newPassword) {
 		if (oldPassword === this.#password) {
 			this.#password = newPassword;
 		} else {
@@ -34,25 +33,14 @@ export class Passenger {
 		}
 	}
 
-  static numberOfPassengers() {
-		console.log(`O total de passageiras cadastradas é: ${this.passengers.length}`);
+	static numberOfPassengers() {
+		const numberOfPassengers = super.numberOfPeople(Passenger.passengers);
+		console.log(`O total de passageiras cadastradas é ${numberOfPassengers}`)
 	}
 
 	static ageAverage() {
-		const totalOfPassengers = this.passengers.length;
-
-    if(totalOfPassengers === 0) return;
-
-		const ageSum = this.passengers.reduce((total, motorista) => total + motorista.age, 0);
-		const ageAverage = (ageSum / totalOfPassengers).toFixed(2);
-		console.log(`A média de idade das passageiras é de: ${ageAverage}`);
+		const ageAverageReturned = super.ageAverage(Passenger.passengers)
+		console.log(`A média de idade das passageiras é: ${ageAverageReturned} anos`)
 	}
 
-  get amountSpent() {
-		return this.#amountSpent;
-	}
-
-	set amountSpent(amount) {
-		this.#amountSpent = amount;
-	}
 }
