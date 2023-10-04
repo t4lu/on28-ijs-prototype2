@@ -4,6 +4,14 @@ export class Driver {
 	numberOfRides = 0;
 	amountEarned = 0;
 	static drivers = [];
+	/*
+	atributos estáticos NÃO pertencem aos objetos, mas sim, à classe. seu uso está condicionado a cenários em que se faz
+	necessário definir atributos exclusivos para a Classe, e não suas instâncias.
+	para chamar:
+	console.log(Driver.drivers) (certo!)
+
+	console.log(driver1.drivers) (errado! -> o objeto não tem acesso!!)
+	*/
 
 	constructor(name, age) {
 		if (age < 18) {
@@ -21,12 +29,13 @@ export class Driver {
 		this.amountEarned += amount;
 		this.numberOfRides++;
 	}
+	/* assim como os atributos, os métodos estáticos pertencem APENAS à classe. */
 	static numberOfDrivers() {
 		console.log(`Existem ${Driver.drivers.length} motoristas cadastradas.`)
 	}
 
 	static ageAverage() {
-		const totalOfDrivers = Driver.drivers.lenght;
+		const totalOfDrivers = Driver.drivers.length;
 		if (totalOfDrivers === 0) return;
 
 		const sumOfAges = Driver.drivers.reduce((total, driver) => total + driver.age, 0);

@@ -29,7 +29,7 @@ export class Passenger {
 	}
 
 	static ageAverage() {
-		const totalOfPassengers = Passenger.passengers.lenght;
+		const totalOfPassengers = Passenger.passengers.length;
 		if (totalOfPassengers === 0) return;
 
 		const sumOfAges = Passenger.passengers.reduce((total, passenger) => total + passenger.age, 0);
