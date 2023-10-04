@@ -11,7 +11,7 @@ export class Passenger {
 		this.name = name;
 		this.age = age;
 		this.#password = password;
-		this.constructor.passengers.push({ name: name, age: age });
+		this.constructor.passengers.push({ name, age }); //por excluisividade do JS nao preciso repetir name:name, etc., ja que têm a mesma nomenclatura
 	}
 
 	get amountSpent(){
@@ -26,6 +26,8 @@ export class Passenger {
 		if(oldPassword === this.#password){
 			this.#password = newPassword;
 			console.log(`Senha alterada com sucesso!`)
+		} else {
+			console.log(`Falha na atualização - senha atual incorreta.`)
 		}
 	}
 	requestDrive(driver, amount, password) {
