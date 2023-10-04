@@ -1,4 +1,4 @@
-import { Driver } from './classes/Driver.js';
+import { Driver } from './Driver.js';
 export class Passenger {
     name;
     age;
