@@ -9,6 +9,7 @@ export class Bank {
         this.bankCode = bankCode;
         this.bankName = bankName;
         this.#transferTax = transferTax;
+        Bank.createdBanks.push({ bankCode: bankCode, qtdClients: 0 })
     }
 
     get transferTax() {
@@ -18,8 +19,10 @@ export class Bank {
     set transferTax(taxPaidToTransfer) {
         this.#transferTax = taxPaidToTransfer;
     }
-
-    createdBanks(createdBankCode, qtdClients) {
-        Bank.createdBanks.push({ bankCode: createdBankCode, qtdClients: 0 })
-    }
 }
+/*
+console.log(Bank.createdBanks)
+const myBank = new Bank(222, 'talu bank', 0.01)
+console.log(myBank)
+console.log(Bank.createdBanks)
+console.log(myBank.transferTax)*/
